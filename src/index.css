@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+  /* Paleta Institucional: Primária Branco Gelo (#F8FAFC) · Secundária Azul Oceano (#0EA5E9) */
+  --background: 210 40% 98%;
+  --surface: 210 36% 96%;
+  --surface-elevated: 210 50% 99%;
+  --surface-tinted: 201 78% 95%;
+
+  --foreground: 218 42% 11%;
+  --foreground-secondary: 215 24% 32%;
+  --muted-foreground: 215 16% 45%;
+
+  /* Azul Oceano (#0EA5E9) + variação acessível WCAG AA para texto/botões */
+  --ocean: 199 89% 48%;
+  --ocean-accessible: 201 92% 34%;
+  --ocean-accessible-hover: 202 94% 28%;
+  --ocean-foreground: 210 40% 98%;
+
+  --border: 213 27% 88%;
+  --border-strong: 213 24% 80%;
+
+  --success: 162 72% 30%;
+  --success-surface: 158 55% 94%;
+  --danger: 350 74% 42%;
+  --danger-surface: 350 70% 95%;
+
+  /* Tokens de gradiente e sombras suaves em camadas */
+  --gradient-coastal: linear-gradient(
+    135deg,
+    hsl(210 40% 98%) 0%,
+    hsl(202 68% 96%) 55%,
+    hsl(210 40% 98%) 100%
+  );
+  --gradient-ocean-sheen: linear-gradient(
+    180deg,
+    hsla(199, 89%, 48%, 0.08) 0%,
+    hsla(199, 89%, 48%, 0) 100%
+  );
+  --shadow-clinical: 0 1px 2px hsla(218, 42%, 11%, 0.04),
+    0 8px 24px -8px hsla(201, 60%, 24%, 0.08);
+  --shadow-elevated: 0 2px 6px hsla(218, 42%, 11%, 0.05),
+    0 18px 38px -12px hsla(201, 70%, 26%, 0.14);
+}
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-surface: hsl(var(--surface));
+  --color-surface-elevated: hsl(var(--surface-elevated));
+  --color-surface-tinted: hsl(var(--surface-tinted));
+
+  --color-foreground: hsl(var(--foreground));
+  --color-foreground-secondary: hsl(var(--foreground-secondary));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-ocean: hsl(var(--ocean));
+  --color-primary: hsl(var(--ocean-accessible));
+  --color-primary-hover: hsl(var(--ocean-accessible-hover));
+  --color-primary-foreground: hsl(var(--ocean-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-border-strong: hsl(var(--border-strong));
+
+  --color-success: hsl(var(--success));
+  --color-success-surface: hsl(var(--success-surface));
+  --color-danger: hsl(var(--danger));
+  --color-danger-surface: hsl(var(--danger-surface));
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: hsla(199, 89%, 48%, 0.18);
+    color: hsl(var(--foreground));
+  }
+}
+
+.bg-coastal-canvas {
+  background-image: var(--gradient-coastal);
+}
+
+.bg-ocean-sheen {
+  background-image: var(--gradient-ocean-sheen);
+}
+
+.shadow-clinical {
+  box-shadow: var(--shadow-clinical);
+}
+
+.shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Textura sutil de grão mineral em baixíssima opacidade */
+.clinical-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
